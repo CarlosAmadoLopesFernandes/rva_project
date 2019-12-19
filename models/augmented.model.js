@@ -4,11 +4,13 @@ var mongoose = require('../config/database');
 const schema = {
     marker_id: String,
     pt: {
+        title: String,
         left_info: [String],
         right_info: [String],
         place_info: [String]
     },
     en: {
+        title: String,
         left_info: [String],
         right_info: [String],
         place_info: [String]
