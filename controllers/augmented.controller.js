@@ -12,8 +12,8 @@ exports.getAll = (request, response) => {
 exports.getByMarkerID = (request, response) => {
     const marker_id = request.params.marker_id;
     Augmented.findOne({
-        marker_id: marker_id
-    })
+            marker_id: marker_id
+        })
         .lean().exec((error, elements) => {
             if (error) throw error;
             return response.send(elements);
@@ -38,5 +38,14 @@ exports.save = (request, response) => {
         if (error) throw error;
         return response.send(augmenteds);
     })
+}
 
+exports.update = (request, response) => {
+    let data = request.body;
+    Augmented.findOneAndUpdate({
+        marker_id: request.params.marker_id
+    }, data, { new: true }).lean().exec((error, augmented) => {
+        if (error) throw error;
+        return response.send(augmented);
+    });
 }

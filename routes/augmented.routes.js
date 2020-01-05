@@ -8,6 +8,7 @@ router.route('/')
 
 router.route('/:marker_id')
     .get(augmentedController.getByMarkerID)
+    .put(augmentedController.update);
 
 
 
